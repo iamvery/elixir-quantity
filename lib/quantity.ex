@@ -1,0 +1,2 @@
+defmodule Quantity do
+end
