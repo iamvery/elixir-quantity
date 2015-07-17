@@ -5,4 +5,9 @@ defmodule QuantityTest do
     length = Quantity.feet(3)
     assert "#{length}" == "3 feet"
   end
+
+  test "inflection" do
+    length = Quantity.feet(1)
+    assert "#{length}" == "1 foot"
+  end
 end
