@@ -1,7 +1,8 @@
 defmodule QuantityTest do
   use ExUnit.Case
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "string conversion" do
+    length = Quantity.feet(3)
+    assert "#{length}" == "3 feet"
   end
 end
