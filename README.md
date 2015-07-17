@@ -31,3 +31,9 @@ total_length = Quantity.add(length_in_inches, length)
 IO.puts "Length is #{total_length}"
 # => Length is 72 inches
 ```
+
+## TODO
+
+* The ability to infer conversions.
+  e.g. Given conversion from inches to feet and feet to meters, it should be able to get from inches to meters.
+* DRY'er arithmetic implementation.
