@@ -13,7 +13,7 @@ defmodule Quantity do
     Inflection.singularize(unit)
   end
 
-  def inflect(%{magnitude: _, unit: unit}) do
+  def inflect(%{unit: unit}) do
     Inflection.pluralize(unit)
   end
 end
