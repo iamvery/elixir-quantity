@@ -23,7 +23,29 @@ IO.puts "Length is #{length_in_inches}"
 ### Arithmetic
 
 ```elixir
-total_length = Quantity.feet(1) + Quantity.inches(6)
+total_length = Quantity.add(length, length_in_inches)
 IO.puts "Length is #{total_length}"
-# => Length is 1.5 feet
+# => Length is 6 feet
+
+total_length = Quantity.add(length_in_inches, length)
+IO.puts "Length is #{total_length}"
+# => Length is 72 inches
+```
+
+## THOUGHTS
+
+```elixir
+defmodule Quantity do
+  # struct #Quantity<magnitude, unit>
+
+  # using pattern matching to implement conversions
+
+  def feet({magnitude, :feet}) do
+    # self
+  end
+
+  def feet({magnitude, :inches}) do
+    # magnitude / 12, :feet
+  end
+end
 ```
