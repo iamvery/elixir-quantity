@@ -34,4 +34,13 @@ defmodule QuantityTest do
     length_in_feet = Quantity.of(length, :feet)
     assert "#{length_in_feet}" == "1.0 foot"
   end
+
+  test "arithmetic" do
+    length = Quantity.of(2, :feet)
+    assert Quantity.add(length, length) == Quantity.of(4, :feet)
+
+    first = Quantity.of(2, :feet)
+    second = Quantity.of(12, :inches)
+    assert Quantity.add(first, second) == Quantity.of(3, :feet)
+  end
 end

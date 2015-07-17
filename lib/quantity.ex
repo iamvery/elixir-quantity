@@ -5,7 +5,7 @@ defmodule Quantity do
     %Quantity{magnitude: magnitude, unit: unit}
   end
 
-  def of(quantity = %{unit: unit}, unit), do: quantity
+  def of(quantity = %{unit: _unit}, _unit), do: quantity
   def of(%{magnitude: magnitude, unit: current_unit}, new_unit) do
     new_magnitude = convert(magnitude, current_unit, new_unit)
     of(new_magnitude, new_unit)
@@ -13,6 +13,14 @@ defmodule Quantity do
 
   def convert(value, :feet, :inches), do: value * 12 # inches per foot
   def convert(value, :inches, :feet), do: value / 12 # inches per foot
+
+  def add(first = %{unit: unit}, second = %{unit: unit}) do
+    of(first.magnitude + second.magnitude, unit)
+  end
+
+  def add(first = %{unit: first_unit}, second) do
+    add(first, of(second, first_unit))
+  end
 
   def inflect(%{magnitude: magnitude, unit: unit}) when magnitude == 1 do
     Inflection.singularize(unit)
