@@ -37,3 +37,5 @@ IO.puts "Length is #{total_length}"
 * The ability to infer conversions.
   e.g. Given conversion from inches to feet and feet to meters, it should be able to get from inches to meters.
 * DRY'er arithmetic implementation.
+* Inflections are intentionally naive right now.
+  Maybe use something like https://github.com/nurugger07/inflex?
