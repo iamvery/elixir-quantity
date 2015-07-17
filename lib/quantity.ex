@@ -1,11 +1,11 @@
 defmodule Quantity do
   defstruct magnitude: nil, unit: nil
 
-  def inches(magnitude) do
+  def inches(magnitude) when is_number(magnitude) do
     %Quantity{magnitude: magnitude, unit: :inches}
   end
 
-  def feet(magnitude) do
+  def feet(magnitude) when is_number(magnitude) do
     %Quantity{magnitude: magnitude, unit: :feet}
   end
 
