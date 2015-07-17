@@ -15,4 +15,9 @@ defmodule InflectionTest do
     assert Inflection.singularize("feet") == "foot"
     assert Inflection.singularize("foot") == "foot"
   end
+
+  test "conversion to string" do
+    assert Inflection.pluralize(:foot) == "feet"
+    assert Inflection.singularize(:feet) == "foot"
+  end
 end
