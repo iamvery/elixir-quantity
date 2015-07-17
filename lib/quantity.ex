@@ -6,9 +6,19 @@ defmodule Quantity do
     %Quantity{magnitude: magnitude, unit: :inches}
   end
 
+  def inches(%{magnitude: magnitude_in_feet, unit: :feet}) do
+    new_magnitude = magnitude_in_feet * 12 # inches per foot
+    %Quantity{magnitude: new_magnitude, unit: :inches}
+  end
+
   def feet(quantity = %{unit: :feet}), do: quantity
   def feet(magnitude) when is_number(magnitude) do
     %Quantity{magnitude: magnitude, unit: :feet}
+  end
+
+  def feet(%{magnitude: magnitude_in_inches, unit: :inches}) do
+    new_magnitude = magnitude_in_inches / 12 # foot per 12 inches
+    %Quantity{magnitude: new_magnitude, unit: :feet}
   end
 
   def inflect(%{magnitude: magnitude, unit: unit}) when magnitude == 1 do

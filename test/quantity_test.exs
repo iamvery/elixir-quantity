@@ -24,4 +24,14 @@ defmodule QuantityTest do
     length = Quantity.inches(12)
     assert Quantity.inches(length) == length
   end
+
+  test "unit conversion" do
+    length = Quantity.feet(3)
+    length_in_inches = Quantity.inches(length)
+    assert "#{length_in_inches}" == "36 inches"
+
+    length = Quantity.inches(12)
+    length_in_feet = Quantity.feet(length)
+    assert "#{length_in_feet}" == "1.0 foot"
+  end
 end
