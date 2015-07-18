@@ -5,7 +5,7 @@ defmodule Quantity do
     %Quantity{magnitude: magnitude, unit: unit}
   end
 
-  def of(quantity = %{unit: _unit}, _unit), do: quantity
+  def of(quantity = %{unit: unit}, unit), do: quantity
   def of(%{magnitude: magnitude, unit: current_unit}, new_unit) do
     new_magnitude = convert(magnitude, current_unit, new_unit)
     of(new_magnitude, new_unit)
