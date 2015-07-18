@@ -1,5 +1,5 @@
 defmodule Quantity do
-  defstruct magnitude: nil, unit: nil
+  defstruct magnitude: 0, unit: :unknown
 
   def of(magnitude, unit) when is_number(magnitude) and is_atom(unit) do
     %Quantity{magnitude: magnitude, unit: unit}
