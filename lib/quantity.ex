@@ -1,14 +1,14 @@
 defmodule Quantity do
   defstruct magnitude: 0, unit: :unknown
 
-  def of(magnitude, unit) when is_number(magnitude) and is_atom(unit) do
-    %Quantity{magnitude: magnitude, unit: unit}
-  end
-
   def of(quantity = %{unit: unit}, unit), do: quantity
   def of(%{magnitude: magnitude, unit: current_unit}, new_unit) do
     new_magnitude = convert(magnitude, current_unit, new_unit)
     of(new_magnitude, new_unit)
+  end
+
+  def of(magnitude, unit) do
+    %Quantity{magnitude: magnitude, unit: unit}
   end
 
   def convert(value, :feet, :inches), do: value * 12 # inches per foot
