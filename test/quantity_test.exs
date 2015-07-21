@@ -25,7 +25,6 @@ defmodule QuantityTest do
     assert length_in_feet == Quantity.of(1, :feet)
   end
 
-  @tag :skip
   test "adding quantities of like units" do
     length = Quantity.of(2, :feet)
     assert Quantity.add(length, length) == Quantity.of(4, :feet)

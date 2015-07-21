@@ -8,4 +8,8 @@ defmodule Quantity do
 
   def convert(magnitude, :feet, :inches), do: magnitude * 12 # inches per foot
   def convert(magnitude, :inches, :feet), do: magnitude / 12 # inches per foot
+
+  def add(first = %{unit: unit}, second = %{unit: unit}) do
+    of(first.magnitude + second.magnitude, unit)
+  end
 end
