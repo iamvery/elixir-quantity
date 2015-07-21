@@ -30,7 +30,6 @@ defmodule QuantityTest do
     assert Quantity.add(length, length) == Quantity.of(4, :feet)
   end
 
-  @tag :skip
   test "adding quantities of differing units" do
     first = Quantity.of(2, :feet)
     second = Quantity.of(12, :inches)

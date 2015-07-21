@@ -12,4 +12,7 @@ defmodule Quantity do
   def add(first = %{unit: unit}, second = %{unit: unit}) do
     of(first.magnitude + second.magnitude, unit)
   end
+  def add(first, second) do
+    add(first, of(second, first.unit))
+  end
 end
