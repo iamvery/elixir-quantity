@@ -1,6 +1,10 @@
 defmodule QuantityTest do
   use ExUnit.Case
 
+  test "equality" do
+    assert Quantity.of(2, :inches) == Quantity.of(2, :inches)
+  end
+
   test "self conversion" do
     length = Quantity.of(2, :feet)
     assert Quantity.of(length, :feet) == length
@@ -9,20 +13,24 @@ defmodule QuantityTest do
     assert Quantity.of(length, :inches) == length
   end
 
-  test "unit conversion" do
+  test "convert feet to inches" do
     length = Quantity.of(3, :feet)
     length_in_inches = Quantity.of(length, :inches)
     assert length_in_inches == Quantity.of(36, :inches)
+  end
 
+  test "convert inches to feet" do
     length = Quantity.of(12, :inches)
     length_in_feet = Quantity.of(length, :feet)
     assert length_in_feet == Quantity.of(1, :feet)
   end
 
-  test "arithmetic" do
+  test "adding quantities of like units" do
     length = Quantity.of(2, :feet)
     assert Quantity.add(length, length) == Quantity.of(4, :feet)
+  end
 
+  test "adding quantities of differing units" do
     first = Quantity.of(2, :feet)
     second = Quantity.of(12, :inches)
     assert Quantity.add(first, second) == Quantity.of(3, :feet)
