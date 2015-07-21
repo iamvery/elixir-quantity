@@ -36,7 +36,6 @@ defmodule QuantityTest do
     assert Quantity.add(first, second) == Quantity.of(3, :feet)
   end
 
-  @tag :skip
   test "string conversion" do
     length = Quantity.of(3, :feet)
     assert "#{length}" == "3 feet"
