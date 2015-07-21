@@ -12,11 +12,11 @@ defmodule QuantityTest do
   test "unit conversion" do
     length = Quantity.of(3, :feet)
     length_in_inches = Quantity.of(length, :inches)
-    assert "#{length_in_inches}" == "36 inches"
+    assert length_in_inches == Quantity.of(36, :inches)
 
     length = Quantity.of(12, :inches)
     length_in_feet = Quantity.of(length, :feet)
-    assert "#{length_in_feet}" == "1.0 foot"
+    assert length_in_feet == Quantity.of(1, :feet)
   end
 
   test "arithmetic" do
