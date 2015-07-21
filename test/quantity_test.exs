@@ -1,22 +1,6 @@
 defmodule QuantityTest do
   use ExUnit.Case
 
-  test "string conversion" do
-    length = Quantity.of(3, :feet)
-    assert "#{length}" == "3 feet"
-
-    length = Quantity.of(12, :inches)
-    assert "#{length}" == "12 inches"
-  end
-
-  test "inflection" do
-    length = Quantity.of(1, :feet)
-    assert "#{length}" == "1 foot"
-
-    length = Quantity.of(1, :inches)
-    assert "#{length}" == "1 inch"
-  end
-
   test "self conversion" do
     length = Quantity.of(2, :feet)
     assert Quantity.of(length, :feet) == length
@@ -42,5 +26,21 @@ defmodule QuantityTest do
     first = Quantity.of(2, :feet)
     second = Quantity.of(12, :inches)
     assert Quantity.add(first, second) == Quantity.of(3, :feet)
+  end
+
+  test "string conversion" do
+    length = Quantity.of(3, :feet)
+    assert "#{length}" == "3 feet"
+
+    length = Quantity.of(12, :inches)
+    assert "#{length}" == "12 inches"
+  end
+
+  test "inflection" do
+    length = Quantity.of(1, :feet)
+    assert "#{length}" == "1 foot"
+
+    length = Quantity.of(1, :inches)
+    assert "#{length}" == "1 inch"
   end
 end
