@@ -19,7 +19,6 @@ defmodule QuantityTest do
     assert length_in_inches == Quantity.of(36, :inches)
   end
 
-  @tag :skip
   test "convert inches to feet" do
     length = Quantity.of(12, :inches)
     length_in_feet = Quantity.of(length, :feet)
