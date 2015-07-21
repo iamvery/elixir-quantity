@@ -5,7 +5,6 @@ defmodule QuantityTest do
     assert Quantity.of(2, :inches) == Quantity.of(2, :inches)
   end
 
-  @tag :skip
   test "self conversion" do
     length = Quantity.of(2, :feet)
     assert Quantity.of(length, :feet) == length
