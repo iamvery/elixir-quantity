@@ -1,7 +1,6 @@
 defmodule QuantityTest do
   use ExUnit.Case
 
-  @tag :skip
   test "equality" do
     assert Quantity.of(2, :inches) == Quantity.of(2, :inches)
   end
