@@ -44,7 +44,6 @@ defmodule QuantityTest do
     assert "#{length}" == "12 inches"
   end
 
-  @tag :skip
   test "inflection" do
     length = Quantity.of(1, :feet)
     assert "#{length}" == "1 foot"
