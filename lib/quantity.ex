@@ -1,7 +1,7 @@
 defmodule Quantity do
   defstruct magnitude: 0, unit: :unknown
 
-  def of(quantity = %{unit: unit}, unit), do: quantity
+  def of(%{unit: unit} = quantity, unit), do: quantity
   def of(%{magnitude: magnitude, unit: current_unit}, new_unit) do
     new_magnitude = convert(magnitude, current_unit, new_unit)
     of(new_magnitude, new_unit)
@@ -14,11 +14,11 @@ defmodule Quantity do
   def convert(value, :feet, :inches), do: value * 12 # inches per foot
   def convert(value, :inches, :feet), do: value / 12 # inches per foot
 
-  def add(first = %{unit: unit}, second = %{unit: unit}) do
+  def add(%{unit: unit} = first, %{unit: unit} = second) do
     of(first.magnitude + second.magnitude, unit)
   end
 
-  def add(first = %{unit: first_unit}, second) do
+  def add(%{unit: first_unit} = first, second) do
     add(first, of(second, first_unit))
   end
 
