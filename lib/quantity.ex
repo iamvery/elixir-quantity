@@ -14,18 +14,17 @@ defmodule Quantity do
     of(first.magnitude + second.magnitude, unit)
   end
   def add(first, second), do: of(second, first.unit) |> add(first)
-
-  def inflect(%{magnitude: magnitude, unit: unit}) when magnitude == 1 do
-    Inflection.singularize(unit)
-  end
-
-  def inflect(%{unit: unit}) do
-    Inflection.pluralize(unit)
-  end
 end
 
 defimpl String.Chars, for: Quantity do
+  import Inflection
+
   def to_string(quantity) do
-    "#{quantity.magnitude} #{Quantity.inflect(quantity)}"
+    "#{quantity.magnitude} #{inflect(quantity)}"
   end
+
+  defp inflect(%{magnitude: value, unit: unit}) when value == 1 do
+    singularize(unit)
+  end
+  defp inflect(%{unit: unit}), do: pluralize(unit)
 end
